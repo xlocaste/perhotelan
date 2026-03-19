@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TamuSeeder::class,
             JenisKamarSeeder::class,
+            KamarSeeder::class,
         ]);
     }
 }

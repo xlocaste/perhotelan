@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JenisKamarController;
+use App\Http\Controllers\KamarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TamuController;
 use Illuminate\Foundation\Application;
@@ -46,6 +47,17 @@ Route::prefix('/jenis-kamar')->name('jenis-kamar.')->group(function() {
         Route::get('/{jenisKamar}/edit', [JenisKamarController::class, 'edit'])->name('edit');
     });
     Route::get('/', [JenisKamarController::class, 'index'])->name('index');
+});
+
+Route::prefix('/kamar')->name('kamar.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [KamarController::class, 'create'])->name('create');
+        Route::post('/', [KamarController::class, 'store'])->name('store');
+        Route::put('/{kamar}', [KamarController::class, 'update'])->name('update');
+        Route::delete('/{kamar}', [KamarController::class, 'destroy'])->name('destroy');
+        Route::get('/{kamar}/edit', [KamarController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [KamarController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
