@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Kamar\StoreRequest;
+use App\Models\JenisKamar;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,6 +16,24 @@ class KamarController extends Controller
 
         return Inertia::render('Kamar/List', [
             'Kamar' => $daftarKamar
+        ]);
+    }
+
+    public function store(StoreRequest $request)
+    {
+        $kamar = Kamar::create([
+            'nomor_kamar' => $request -> nomor_kamar,
+            'jenis_kamar_id' => $request -> jenis_kamar_id,
+            'status' => $request -> status,
+        ]);
+
+        return redirect()->route('kamar.index');
+    }
+
+    public function create()
+    {
+        return Inertia::render('Kamar/Add', [
+            'jenisKamar' => jenisKamar::all(),
         ]);
     }
 }
