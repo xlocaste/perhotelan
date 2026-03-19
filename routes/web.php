@@ -29,6 +29,8 @@ Route::prefix('/tamu')->name('tamu.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [TamuController::class, 'create'])->name('create');
         Route::post('/', [TamuController::class, 'store'])->name('store');
+        Route::put('/{tamu}', [TamuController::class, 'update'])->name('update');
+        Route::get('/{tamu}/edit', [TamuController::class, 'edit'])->name('edit');
     });
     Route::get('/', [TamuController::class, 'index'])->name('index');
 });
