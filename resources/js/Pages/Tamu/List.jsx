@@ -6,6 +6,7 @@ const List = ({ Tamu }) => {
   return (
     <div>
       <h1>Data Tamu</h1>
+      <Link href={route('tamu.create')}>Tambah Tamu</Link>
 
       <table border="1" cellPadding="5">
         <thead>

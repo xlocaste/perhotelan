@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/tamu')->name('tamu.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [TamuController::class, 'create'])->name('create');
+        Route::post('/', [TamuController::class, 'store'])->name('store');
     });
     Route::get('/', [TamuController::class, 'index'])->name('index');
 });
