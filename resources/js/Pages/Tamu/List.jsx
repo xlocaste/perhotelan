@@ -2,6 +2,11 @@ import React from 'react'
 import { Link, router } from '@inertiajs/react'
 
 const List = ({ Tamu }) => {
+    const handleDelete = (id) => {
+        if (confirm('Yakin hapus data?')) {
+        router.delete(route('tamu.destroy', id))
+        }
+    }
 
   return (
     <div>

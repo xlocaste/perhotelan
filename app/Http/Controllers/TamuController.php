@@ -6,6 +6,7 @@ use App\Http\Requests\Tamu\StoreRequest;
 use App\Http\Requests\Tamu\UpdateRequest;
 use App\Models\Tamu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class TamuController extends Controller
@@ -53,5 +54,12 @@ class TamuController extends Controller
         return Inertia::render('Tamu/Update', [
             'tamu' => $tamu,
         ]);
+    }
+
+    public function destroy(Tamu $tamu)
+    {
+        $tamu->delete();
+
+        return Redirect::route('tamu.index')->with('message', 'Data berhasil dihapus');
     }
 }

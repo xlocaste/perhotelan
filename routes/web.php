@@ -30,6 +30,7 @@ Route::prefix('/tamu')->name('tamu.')->group(function() {
         Route::get('/create', [TamuController::class, 'create'])->name('create');
         Route::post('/', [TamuController::class, 'store'])->name('store');
         Route::put('/{tamu}', [TamuController::class, 'update'])->name('update');
+        Route::delete('/{tamu}', [TamuController::class, 'destroy'])->name('destroy');
         Route::get('/{tamu}/edit', [TamuController::class, 'edit'])->name('edit');
     });
     Route::get('/', [TamuController::class, 'index'])->name('index');
