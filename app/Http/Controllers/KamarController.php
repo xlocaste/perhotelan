@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Kamar\StoreRequest;
+use App\Http\Requests\Kamar\UpdateRequest;
 use App\Models\JenisKamar;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
@@ -33,6 +34,25 @@ class KamarController extends Controller
     public function create()
     {
         return Inertia::render('Kamar/Add', [
+            'jenisKamar' => jenisKamar::all(),
+        ]);
+    }
+
+    public function update(UpdateRequest $request, Kamar $kamar)
+    {
+        $kamar->update([
+            'nomor_kamar' => $request -> nomor_kamar,
+            'jenis_kamar_id' => $request -> jenis_kamar_id,
+            'status' => $request -> status,
+        ]);
+
+        return redirect()->route('kamar.index');
+    }
+
+    public function edit(Kamar $kamar)
+    {
+        return Inertia::render('Kamar/Update', [
+            'kamar' => $kamar,
             'jenisKamar' => jenisKamar::all(),
         ]);
     }
