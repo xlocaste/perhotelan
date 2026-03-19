@@ -7,6 +7,7 @@ use App\Http\Requests\Kamar\UpdateRequest;
 use App\Models\JenisKamar;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class KamarController extends Controller
@@ -55,5 +56,12 @@ class KamarController extends Controller
             'kamar' => $kamar,
             'jenisKamar' => jenisKamar::all(),
         ]);
+    }
+
+    public function destroy(Kamar $kamar)
+    {
+        $kamar->delete();
+
+        return Redirect::route('kamar.index')->with('message', 'Data berhasil dihapus');
     }
 }
