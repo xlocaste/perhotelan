@@ -6,6 +6,7 @@ use App\Http\Requests\JenisKamar\StoreRequest;
 use App\Http\Requests\JenisKamar\UpdateRequest;
 use App\Models\JenisKamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class JenisKamarController extends Controller
@@ -55,5 +56,12 @@ class JenisKamarController extends Controller
         return Inertia::render('JenisKamar/Update', [
             'jenisKamar' => $jenisKamar,
         ]);
+    }
+
+    public function destroy(JenisKamar $jenisKamar)
+    {
+        $jenisKamar->delete();
+
+        return Redirect::route('jenis-kamar.index')->with('message', 'Data berhasil dihapus');
     }
 }
