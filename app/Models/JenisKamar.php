@@ -16,7 +16,6 @@ class JenisKamar extends Model
         'nama',
         'harga',
         'harga_breakfast',
-        'harga_breakfast',
         'fasilitas',
     ];
 }
