@@ -36,6 +36,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Tamu
                                 </NavLink>
+                                <NavLink
+                                    href={route('jenis-kamar.index')}
+                                    active={route().current('jenis-kamar.index')}
+                                >
+                                    Jenis Kamar
+                                </NavLink>
                             </div>
                         </div>
 
