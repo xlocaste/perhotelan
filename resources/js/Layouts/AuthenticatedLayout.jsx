@@ -30,6 +30,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    href={route('tamu.index')}
+                                    active={route().current('tamu.index')}
+                                >
+                                    Tamu
+                                </NavLink>
                             </div>
                         </div>
 
