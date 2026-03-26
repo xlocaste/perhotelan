@@ -28,6 +28,7 @@ export default function AuthenticatedLayout({ header, children }) {
         };
     }, [sidebarOpen]);
 
+
     return (
         <div className="min-h-screen bg-gray-50 flex">
             {sidebarOpen && (
@@ -38,6 +39,60 @@ export default function AuthenticatedLayout({ header, children }) {
                     <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
                 </div>
             )}
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink
+                                    href={route('dashboard')}
+                                    active={route().current('dashboard')}
+                                >
+                                    Dashboard
+                                </NavLink>
+                                <NavLink
+                                    href={route('tamu.index')}
+                                    active={route().current('tamu.index')}
+                                >
+                                    Tamu
+                                </NavLink>
+                                <NavLink
+                                    href={route('jenis-kamar.index')}
+                                    active={route().current('jenis-kamar.index')}
+                                >
+                                    Jenis Kamar
+                                </NavLink>
+                                <NavLink
+                                    href={route('kamar.index')}
+                                    active={route().current('kamar.index')}
+                                >
+                                    Kamar
+                                </NavLink>
+                            </div>
+                        </div>
+
+                        <div className="hidden sm:ms-6 sm:flex sm:items-center">
+                            <div className="relative ms-3">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                            <button
+                                                type="button"
+                                                className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                            >
+                                                {user.name}
+
+                                                <svg
+                                                    className="-me-0.5 ms-2 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </Dropdown.Trigger>
 
             <aside
                 className={`fixed inset-y-0 left-0 z-50 w-64 transform bg-white shadow-lg transition-transform duration-200 ease-in-out flex flex-col ${

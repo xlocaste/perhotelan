@@ -51,10 +51,9 @@ const Add = ({ jenisKamar = [] }) => {
                         </Link>
                     </div>
 
-                    {/* Isi Kartu: Form */}
+                    
                     <div className="p-6">
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Field Nomor Kamar */}
                             <div>
                                 <label
                                     htmlFor="nomor_kamar"
@@ -89,7 +88,6 @@ const Add = ({ jenisKamar = [] }) => {
                                 </div>
                             </div>
 
-                            {/* Field Jenis Kamar */}
                             <div>
                                 <label
                                     htmlFor="jenis_kamar_id"
@@ -134,7 +132,6 @@ const Add = ({ jenisKamar = [] }) => {
                                 </div>
                             </div>
 
-                            {/* Field Status */}
                             <div>
                                 <label
                                     htmlFor="status"
@@ -168,7 +165,6 @@ const Add = ({ jenisKamar = [] }) => {
                                 </div>
                             </div>
 
-                            {/* Tombol Submit */}
                             <div className="flex justify-end pt-4 border-t border-gray-200">
                                 <button
                                     type="submit"
