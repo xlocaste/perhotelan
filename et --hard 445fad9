@@ -1,0 +1,24 @@
+[33me309ed9[m[33m ([m[1;36mHEAD -> [m[1;32mhamrie[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #1 from xlocaste/hamrie
+[33mc740293[m Merge branch 'main' into hamrie
+[33m445fad9[m[33m ([m[1;31morigin/hamrie[m[33m)[m ui: jenis-kamar, kamar, tamu
+[33m746ebf4[m feat:destroy kamar
+[33m22680fb[m feat:update kamar
+[33m8502fd5[m feat:add kamar
+[33m3decee4[m feat:list and seeder data dummy kamar
+[33me4837f4[m ui: landing page and tamu
+[33ma8e2e62[m feat:destroy kamar
+[33m4e009d9[m feat:update kamar
+[33m3325831[m feat:add kamar
+[33m1d709f5[m feat:list and seeder data dummy kamar
+[33m6a89879[m[33m ([m[1;32mmain[m[33m)[m feat:destroy jenis kamar
+[33md3a6cc8[m feat:update jenis kamar
+[33mc82b758[m feat:store jenis kamar
+[33mae9b215[m feat:list and seeder data dummy jenis kamar
+[33m8744f8f[m feat:destroy tamu
+[33mfb5ecc9[m feat:update tamu
+[33m0e32ea0[m feat:add tamu
+[33maae671f[m feat:tamu seeder and data dummy
+[33mee0435c[m feat:list tamu
+[33m6ea08fe[m install: spatie role permission
+[33m443cf2a[m install: breeze inertia react
+[33m434d740[m start project
