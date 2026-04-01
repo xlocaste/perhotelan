@@ -3,6 +3,7 @@
 use App\Http\Controllers\JenisKamarController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\TamuController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,17 @@ Route::prefix('/kamar')->name('kamar.')->group(function() {
         Route::get('/{kamar}/edit', [KamarController::class, 'edit'])->name('edit');
     });
     Route::get('/', [KamarController::class, 'index'])->name('index');
+});
+
+Route::prefix('/reservasi')->name('reservasi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [ReservasiController::class, 'create'])->name('create');
+        Route::post('/', [ReservasiController::class, 'store'])->name('store');
+        Route::put('/{reservasi}', [ReservasiController::class, 'update'])->name('update');
+        Route::delete('/{reservasi}', [ReservasiController::class, 'destroy'])->name('destroy');
+        Route::get('/{reservasi}/edit', [ReservasiController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [ReservasiController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
