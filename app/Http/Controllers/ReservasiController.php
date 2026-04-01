@@ -8,6 +8,7 @@ use App\Models\Kamar;
 use App\Models\Reservasi;
 use App\Models\Tamu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -83,5 +84,12 @@ class ReservasiController extends Controller
             'tamu' => Tamu::all(),
             'kamar' => Kamar::where('status', 'tersedia')->get(),
         ]);
+    }
+
+    public function destroy(Reservasi $reservasi)
+    {
+        $reservasi->delete();
+
+        return Redirect::route('reservasi.index')->with('message', 'Data berhasil dihapus');
     }
 }
