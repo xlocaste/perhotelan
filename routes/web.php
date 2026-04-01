@@ -5,6 +5,7 @@ use App\Http\Controllers\KamarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\TamuController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -74,6 +75,17 @@ Route::prefix('/reservasi')->name('reservasi.')->group(function() {
         Route::get('/{reservasi}/edit', [ReservasiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [ReservasiController::class, 'index'])->name('index');
+});
+
+Route::prefix('/transaksi')->name('transaksi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [TransaksiController::class, 'create'])->name('create');
+        Route::post('/', [TransaksiController::class, 'store'])->name('store');
+        Route::put('/{transaksi}', [TransaksiController::class, 'update'])->name('update');
+        Route::delete('/{transaksi}', [TransaksiController::class, 'destroy'])->name('destroy');
+        Route::get('/{transaksi}/edit', [TransaksiController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [TransaksiController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';

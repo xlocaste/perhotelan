@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             JenisKamarSeeder::class,
             KamarSeeder::class,
             ReservasiSeeder::class,
+            TransaksiSeeder::class,
         ]);
     }
 }
