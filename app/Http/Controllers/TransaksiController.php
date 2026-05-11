@@ -7,6 +7,7 @@ use App\Http\Requests\Transaksi\UpdateRequest;
 use App\Models\Reservasi;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class TransaksiController extends Controller
@@ -63,5 +64,12 @@ class TransaksiController extends Controller
             'transaksi' => $transaksi,
             'reservasi' => Reservasi::with('tamu')->get(),
         ]);
+    }
+
+    public function destroy(Transaksi $transaksi)
+    {
+        $transaksi->delete();
+
+        return Redirect::route('transaksi.index')->with('message', 'Data berhasil dihapus');
     }
 }
