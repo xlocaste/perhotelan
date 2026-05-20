@@ -3,9 +3,12 @@ import { Link, usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
 
 export default function AuthenticatedLayout({ header, children }) {
-    const user = usePage().props.auth.user;
+    const { auth } = usePage().props;
+    const user = auth.user;
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+
+    console.log(auth)
 
     useEffect(() => {
         const handleEscape = (e) => {

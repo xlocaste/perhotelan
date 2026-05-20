@@ -1,16 +1,18 @@
 import React from "react";
-import { Link, router } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
-const List = ({ Tamu }) => {
+const List = ({ auth, Tamu }) => {
     const handleDelete = (id) => {
         if (confirm("Yakin ingin menghapus data tamu ini?")) {
             router.delete(route("tamu.destroy", id));
         }
     };
 
+    console.log(auth.user)
+
     return (
-        <AuthenticatedLayout
+        <AuthenticatedLayout  user={auth.user}
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
                     Daftar Tamu

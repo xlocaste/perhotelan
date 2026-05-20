@@ -6,6 +6,7 @@ use App\Http\Requests\Tamu\StoreRequest;
 use App\Http\Requests\Tamu\UpdateRequest;
 use App\Models\Tamu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -16,7 +17,7 @@ class TamuController extends Controller
         $daftarTamu = Tamu::all();
 
         return Inertia::render('Tamu/List', [
-            'Tamu' => $daftarTamu
+            'Tamu' => $daftarTamu,
         ]);
     }
 

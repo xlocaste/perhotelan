@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         $admin->syncRoles([$adminRole]);
 
         $pengunjung = User::firstOrCreate(
-            ['email' => 'pengunjung@example.com'],
+            ['email' => 'user@example.com'],
             [
                 'name' => 'Pengunjung',
                 'password' => Hash::make('password'),
