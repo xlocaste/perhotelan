@@ -15,12 +15,11 @@ class UserSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $foRole = Role::firstOrCreate(['name' => 'front_office']);
-        $financeRole = Role::firstOrCreate(['name' => 'finance']);
-        $managerRole = Role::firstOrCreate(['name' => 'manager']);
+        $pengunjungRole = Role::firstOrCreate(['name' => 'pengunjung']);
+        $pimpinanRole = Role::firstOrCreate(['name' => 'pimpinan']);
 
         $admin = User::firstOrCreate(
-            ['email' => 'admin@hotel.com'],
+            ['email' => 'admin@example.com'],
             [
                 'name' => 'Administrator',
                 'password' => Hash::make('password'),
@@ -28,31 +27,22 @@ class UserSeeder extends Seeder
         );
         $admin->syncRoles([$adminRole]);
 
-        $fo = User::firstOrCreate(
-            ['email' => 'fo@hotel.com'],
+        $pengunjung = User::firstOrCreate(
+            ['email' => 'pengunjung@example.com'],
             [
-                'name' => 'Front Office',
+                'name' => 'Pengunjung',
                 'password' => Hash::make('password'),
             ]
         );
-        $fo->syncRoles([$foRole]);
+        $pengunjung->syncRoles([$pengunjungRole]);
 
-        $finance = User::firstOrCreate(
-            ['email' => 'finance@hotel.com'],
+        $pimpinan = User::firstOrCreate(
+            ['email' => 'pimpinan@example.com'],
             [
-                'name' => 'Finance',
+                'name' => 'Pemimpin',
                 'password' => Hash::make('password'),
             ]
         );
-        $finance->syncRoles([$financeRole]);
-
-        $manager = User::firstOrCreate(
-            ['email' => 'manager@hotel.com'],
-            [
-                'name' => 'Manager',
-                'password' => Hash::make('password'),
-            ]
-        );
-        $manager->syncRoles([$managerRole]);
+        $pimpinan->syncRoles([$pimpinanRole]);
     }
 }
