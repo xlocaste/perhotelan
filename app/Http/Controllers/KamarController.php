@@ -64,4 +64,13 @@ class KamarController extends Controller
 
         return Redirect::route('kamar.index')->with('message', 'Data berhasil dihapus');
     }
+
+    public function list()
+    {
+        $listKamar = Kamar::with('jenisKamar')->get();
+
+        return Inertia::render('User/Dashboard', [
+            'Kamar' => $listKamar
+        ]);
+    }
 }
