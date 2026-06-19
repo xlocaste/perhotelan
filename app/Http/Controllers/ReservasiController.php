@@ -50,20 +50,9 @@ class ReservasiController extends Controller
         if ($request->kamar_id != $reservasi->kamar_id) {
 
             Kamar::where('id', $reservasi->kamar_id)
-                ->update(['status' => 'tersedia']);
-
-            Kamar::where('id', $request->kamar_id)
-                ->update(['status' => 'terisi']);
-        }
-
-        if ($request->status == 'checkout' || $request->status == 'batal') {
-            Kamar::where('id', $reservasi->kamar_id)
-                ->update(['status' => 'tersedia']);
-        }
-
-        if ($request->status == 'checkin') {
-            Kamar::where('id', $reservasi->kamar_id)
-                ->update(['status' => 'terisi']);
+                ->update([
+                    'status' => 'tersedia'
+                ]);
         }
 
         $reservasi->update([
@@ -73,6 +62,20 @@ class ReservasiController extends Controller
             'check_out' => $request->check_out,
             'status' => $request->status,
         ]);
+
+        if ($request->status == 'checkin') {
+            Kamar::where('id', $request->kamar_id)
+                ->update([
+                    'status' => 'terisi'
+                ]);
+        }
+
+        if (in_array($request->status, ['checkout', 'batal'])) {
+            Kamar::where('id', $request->kamar_id)
+                ->update([
+                    'status' => 'tersedia'
+                ]);
+        }
 
         return redirect()->route('reservasi.index');
     }

@@ -27,6 +27,8 @@ const List = ({ Kamar = [] }) => {
         }
     };
 
+    console.log(Kamar)
+
     return (
         <AuthenticatedLayout
             header={
@@ -79,6 +81,9 @@ const List = ({ Kamar = [] }) => {
                                     Jenis Kamar
                                 </th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Kode
+                                </th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Status
                                 </th>
                                 <th className="relative px-6 py-3">
@@ -101,6 +106,9 @@ const List = ({ Kamar = [] }) => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {item.jenis_kamar?.nama}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            {item.jenis_kamar?.kode}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             <StatusBadge status={item.status} />
