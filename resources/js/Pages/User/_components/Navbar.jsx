@@ -8,7 +8,6 @@ const Navbar = ({ onMenuClick }) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
 
-    // Menutup dropdown jika klik di luar area
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -23,11 +22,10 @@ const Navbar = ({ onMenuClick }) => {
             document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+
     return (
         <div className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm sm:px-6 lg:px-8">
-            {/* Bagian Kiri: Tombol Menu Mobile + Logo */}
             <div className="flex items-center">
-                {/* Tombol Hamburger untuk mobile (sama seperti referensi) */}
                 {onMenuClick && (
                     <button
                         onClick={onMenuClick}
@@ -49,7 +47,6 @@ const Navbar = ({ onMenuClick }) => {
                     </button>
                 )}
 
-                {/* Logo HotelKu */}
                 <div className="flex items-center">
                     <svg
                         className="h-8 w-8 text-indigo-600"
@@ -73,9 +70,52 @@ const Navbar = ({ onMenuClick }) => {
                 </div>
             </div>
 
-            {/* Bagian Kanan: Profil Pengguna (Diadaptasi dari sidebar referensi) */}
+            {/* Center Navigation */}
+            <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+                <NavLink
+                    href={route("user.tamu")}
+                    active={route().current("user.tamu")}
+                    className="flex gap-2 items-center"
+                >
+                    <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                    </svg>
+                    Tamu
+                </NavLink>
+                <NavLink
+                    href={route("kamar.index")}
+                    active={route().current("kamar.index")}
+                    className="flex gap-2 items-center"
+                >
+                    <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                        />
+                    </svg>
+                    Kamar
+                </NavLink>
+            </div>
+
             {user && (
-                <div className="relative" ref={dropdownRef}>
+                <div className="flex items-center gap-2" ref={dropdownRef}>
                     <button
                         onClick={() => setShowDropdown(!showDropdown)}
                         className="flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -103,36 +143,13 @@ const Navbar = ({ onMenuClick }) => {
                         </svg>
                     </button>
 
-                    {user.roles?.some(role => role.name === 'front-office') && (
-                        <NavLink
-                            href={route("user.tamu")}
-                            active={route().current("user.tamu")}
-                            className="flex gap-2 items-center"
-                        >
-                            <svg
-                                className="w-6 h-6 flex-shrink-0"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                                />
-                            </svg>
-                            Tamu
-                        </NavLink>
-                    )}
-
-                    {/* Dropdown Menu (Turun ke bawah) */}
                     <div
-                        className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in-out ${
+                        className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in-out z-50 ${
                             showDropdown
                                 ? "opacity-100 translate-y-0 visible"
                                 : "opacity-0 -translate-y-2 invisible"
                         }`}
+                        style={{ top: '100%' }}
                     >
                         <div className="py-1">
                             <Link

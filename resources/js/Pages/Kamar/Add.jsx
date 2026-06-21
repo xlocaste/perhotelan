@@ -1,5 +1,6 @@
 import React from "react";
-import { useForm, Link } from "@inertiajs/react";
+import { useForm, Link, Head } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 const Add = ({ jenisKamar = [] }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -16,8 +17,15 @@ const Add = ({ jenisKamar = [] }) => {
     };
 
     return (
-        <div className="py-12">
-            <div className="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <AuthenticatedLayout
+            header={
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    Tambah Kamar
+                </h2>
+            }
+        >
+            <Head title="Tambah Kamar" />
+            <div className="max-w-3xl mx-auto">
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-gray-900">
                         Tambah Kamar Baru
@@ -51,7 +59,6 @@ const Add = ({ jenisKamar = [] }) => {
                         </Link>
                     </div>
 
-                    
                     <div className="p-6">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
@@ -200,7 +207,7 @@ const Add = ({ jenisKamar = [] }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </AuthenticatedLayout>
     );
 };
 
