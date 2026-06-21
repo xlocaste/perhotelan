@@ -92,4 +92,15 @@ Route::prefix('/transaksi')->name('transaksi.')->group(function() {
     Route::get('/', [TransaksiController::class, 'index'])->name('index');
 });
 
+Route::prefix('/user')->name('user.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [TamuController::class, 'create'])->name('create');
+        Route::post('/', [TamuController::class, 'store'])->name('store');
+        Route::put('/{user}', [TamuController::class, 'update'])->name('update');
+        Route::delete('/{user}', [TamuController::class, 'destroy'])->name('destroy');
+        Route::get('/{user}/edit', [TamuController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [TamuController::class, 'tamu'])->name('tamu');
+});
+
 require __DIR__.'/auth.php';

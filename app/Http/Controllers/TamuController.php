@@ -90,4 +90,13 @@ class TamuController extends Controller
 
         return Redirect::route('tamu.index')->with('message', 'Data berhasil dihapus');
     }
+
+    public function tamu()
+    {
+        $daftarTamu = Tamu::with('user')->get();
+
+        return Inertia::render('User/Tamu/List', [
+            'Tamu' => $daftarTamu,
+        ]);
+    }
 }

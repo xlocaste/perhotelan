@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
         $pengunjungRole = Role::firstOrCreate(['name' => 'pengunjung']);
         $pimpinanRole = Role::firstOrCreate(['name' => 'pimpinan']);
+        $frontOfficeRole = Role::firstOrCreate(['name' => 'front office']);
 
         $admin = User::firstOrCreate(
             ['email' => 'admin@example.com'],
@@ -39,10 +40,19 @@ class UserSeeder extends Seeder
         $pimpinan = User::firstOrCreate(
             ['email' => 'pimpinan@example.com'],
             [
-                'name' => 'Pemimpin',
+                'name' => 'Pimpinan',
                 'password' => Hash::make('password'),
             ]
         );
         $pimpinan->syncRoles([$pimpinanRole]);
+
+        $frontOffice = User::firstOrCreate(
+            ['email' => 'frontoffice@example.com'],
+            [
+                'name' => 'Front Office',
+                'password' => Hash::make('password'),
+            ]
+        );
+        $frontOffice->syncRoles([$frontOfficeRole]);
     }
 }
