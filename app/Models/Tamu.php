@@ -12,9 +12,14 @@ class Tamu extends Model
     protected $table = 'tamu';
 
     protected $fillable = [
+        'user_id',
         'no_ktp',
-        'nama',
-        'alamat',
         'no_hp',
+        'alamat',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

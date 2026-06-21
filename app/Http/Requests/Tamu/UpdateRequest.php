@@ -22,10 +22,12 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'no_ktp' => 'required|digits:16',
-            'nama' => 'required|string|max:100',
-            'alamat' => 'nullable|string|max:255',
-            'no_hp' => 'nullable|digits_between:10,15',
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->tamu->user_id,
+
+            'no_ktp' => 'required|unique:tamu,no_ktp,' . $this->tamu->id,
+            'no_hp' => 'required',
+            'alamat' => 'required',
         ];
     }
 

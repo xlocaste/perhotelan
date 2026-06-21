@@ -3,97 +3,103 @@
 namespace Database\Seeders;
 
 use App\Models\Tamu;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class TamuSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Tamu::insert([
+        $dataTamu = [
             [
                 'no_ktp' => '3201010101010001',
-                'nama' => 'Budi Santoso',
+                'name' => 'Budi Santoso',
+                'email' => 'budi@gmail.com',
                 'alamat' => 'Bandung',
                 'no_hp' => '081234567890',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010002',
-                'nama' => 'Siti Aminah',
+                'name' => 'Siti Aminah',
+                'email' => 'siti@gmail.com',
                 'alamat' => 'Jakarta',
                 'no_hp' => '082345678901',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010003',
-                'nama' => 'Ahmad Hidayat',
+                'name' => 'Ahmad Hidayat',
+                'email' => 'ahmad@gmail.com',
                 'alamat' => 'Surabaya',
                 'no_hp' => '083456789012',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010004',
-                'nama' => 'Dewi Lestari',
+                'name' => 'Dewi Lestari',
+                'email' => 'dewi@gmail.com',
                 'alamat' => 'Yogyakarta',
                 'no_hp' => '084567890123',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010005',
-                'nama' => 'Rudi Hartono',
+                'name' => 'Rudi Hartono',
+                'email' => 'rudi@gmail.com',
                 'alamat' => 'Semarang',
                 'no_hp' => '085678901234',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010006',
-                'nama' => 'Maya Sari',
+                'name' => 'Maya Sari',
+                'email' => 'maya@gmail.com',
                 'alamat' => 'Medan',
                 'no_hp' => '086789012345',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010007',
-                'nama' => 'Andi Saputra',
+                'name' => 'Andi Saputra',
+                'email' => 'andi@gmail.com',
                 'alamat' => 'Makassar',
                 'no_hp' => '087890123456',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010008',
-                'nama' => 'Nur Aisyah',
+                'name' => 'Nur Aisyah',
+                'email' => 'nur@gmail.com',
                 'alamat' => 'Palembang',
                 'no_hp' => '088901234567',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010009',
-                'nama' => 'Fajar Nugroho',
+                'name' => 'Fajar Nugroho',
+                'email' => 'fajar@gmail.com',
                 'alamat' => 'Solo',
                 'no_hp' => '089012345678',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'no_ktp' => '3201010101010010',
-                'nama' => 'Putri Maharani',
+                'name' => 'Putri Maharani',
+                'email' => 'putri@gmail.com',
                 'alamat' => 'Denpasar',
                 'no_hp' => '081112223334',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
-        ]);
+        ];
+
+        foreach ($dataTamu as $item) {
+
+            $user = User::create([
+                'name' => $item['name'],
+                'email' => $item['email'],
+                'password' => Hash::make('password'),
+            ]);
+
+            $user->assignRole('pengunjung');
+
+            Tamu::create([
+                'user_id' => $user->id,
+                'no_ktp' => $item['no_ktp'],
+                'alamat' => $item['alamat'],
+                'no_hp' => $item['no_hp'],
+            ]);
+        }
     }
 }

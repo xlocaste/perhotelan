@@ -87,7 +87,7 @@ const List = ({ auth, Tamu }) => {
                                             {item.no_ktp}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {item.nama}
+                                            {item.user.name}
                                         </td>
                                         <td
                                             className="px-6 py-4 text-sm text-gray-900 max-w-xs truncate"

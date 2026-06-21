@@ -22,10 +22,13 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'no_ktp' => 'required|digits:16|unique:tamu,no_ktp',
-            'nama' => 'required|string|max:100',
-            'alamat' => 'nullable|string|max:255',
-            'no_hp' => 'nullable|digits_between:10,15',
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+
+            'no_ktp' => 'required|unique:tamu,no_ktp',
+            'no_hp' => 'required',
+            'alamat' => 'required',
         ];
     }
 

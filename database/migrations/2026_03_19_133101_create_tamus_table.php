@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('tamu', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('no_ktp')->unique();
-            $table->string('nama');
             $table->text('alamat')->nullable();
             $table->string('no_hp')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

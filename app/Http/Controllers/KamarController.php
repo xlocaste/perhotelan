@@ -67,10 +67,13 @@ class KamarController extends Controller
 
     public function list()
     {
+        $tamu = auth()->user()->tamu;
+
         $listKamar = Kamar::with('jenisKamar')->get();
 
         return Inertia::render('User/Dashboard', [
-            'Kamar' => $listKamar
+            'Kamar' => $listKamar,
+            'Tamu' => $tamu
         ]);
     }
 }
