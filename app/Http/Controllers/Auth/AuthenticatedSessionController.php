@@ -39,6 +39,10 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('dashboard');
         }
 
+        if ($user->hasRole('pimpinan')) {
+            return redirect()->route('dashboard');
+        }
+
         if ($user->hasRole('front office')) {
             return redirect()->route('user.dashboard');
         }
