@@ -1,7 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard() {
+export default function Dashboard({ Kamar, Tamu }) {
+    console.log("Tamu",Tamu)
+    console.log("Kamar",Kamar)
     return (
         <AuthenticatedLayout
             header={

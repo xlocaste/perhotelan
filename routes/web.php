@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisKamarController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\ProfileController;
@@ -23,9 +24,9 @@ Route::get('/', function () {
     return inertia('Welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::get('/user/dashboard', [KamarController::class, 'list'
 ])->middleware(['auth', 'verified'])->name('user.dashboard');
