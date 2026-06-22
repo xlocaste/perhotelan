@@ -30,7 +30,6 @@ const Dashboard = ({ Kamar }) => {
             <Navbar />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-                {/* Header Dashboard */}
                 <div className="mb-8">
                     <h1 className="text-2xl font-bold text-gray-900">
                         Dashboard
@@ -40,14 +39,12 @@ const Dashboard = ({ Kamar }) => {
                     </p>
                 </div>
 
-                {/* Grid Card Kamar */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {kamarList.map((kamar) => (
                         <div
                             key={kamar.id}
                             className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200 flex flex-col"
                         >
-                            {/* Bagian Atas Card (Header) */}
                             <div className="p-5 border-b border-gray-100 flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-indigo-100 p-2 rounded-lg">
@@ -76,7 +73,6 @@ const Dashboard = ({ Kamar }) => {
                                 </span>
                             </div>
 
-                            {/* Bagian Tengah Card (Detail) */}
                             <div className="p-5 flex-1 flex flex-col space-y-4">
                                 <div>
                                     <p className="text-sm font-semibold text-indigo-600">
@@ -94,7 +90,6 @@ const Dashboard = ({ Kamar }) => {
                                     </p>
                                 </div>
 
-                                {/* Fasilitas */}
                                 <div>
                                     <p className="text-xs font-medium text-gray-500 mb-2">
                                         Fasilitas:
@@ -120,7 +115,6 @@ const Dashboard = ({ Kamar }) => {
                                 </div>
                             </div>
 
-                            {/* Bagian Bawah Card (Harga Breakfast) */}
                             <div className="px-5 py-3 bg-gray-50 border-t border-gray-100">
                                 <div className="flex items-center text-sm text-gray-600">
                                     <svg

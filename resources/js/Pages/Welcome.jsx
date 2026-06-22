@@ -5,11 +5,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-                {/* Header */}
                 <header className="bg-white shadow-sm dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
-                            {/* Logo & Nama Aplikasi */}
                             <div className="flex items-center">
                                 <svg className="h-8 w-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                                 <span className="ml-3 text-xl font-bold text-gray-900 dark:text-white">
@@ -17,7 +15,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </span>
                             </div>
 
-                            {/* Navigasi */}
                             <nav>
                                 {auth.user ? (
                                     <Link
@@ -31,7 +28,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         href={route('login')}
                                         className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
-                                        Login Admin
+                                        Login
                                     </Link>
                                 )}
                             </nav>
@@ -40,7 +37,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </header>
 
                 <main>
-                    {/* Hero Section */}
                     <section className="relative bg-white dark:bg-gray-800 overflow-hidden">
                         <div className="max-w-7xl mx-auto">
                             <div className="relative z-10 pb-8 bg-white dark:bg-gray-800 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
@@ -77,7 +73,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </section>
 
-                    {/* Fitur Unggulan */}
                     <section className="py-12 bg-gray-50 dark:bg-gray-900">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center">
@@ -89,7 +84,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                             <div className="mt-10">
                                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                                    {/* Fitur 1 */}
                                     <div className="pt-6">
                                         <div className="flow-root bg-white dark:bg-gray-800 rounded-lg px-6 pb-8">
                                             <div className="-mt-6">
@@ -106,7 +100,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
                                     </div>
 
-                                    {/* Fitur 2 */}
                                     <div className="pt-6">
                                         <div className="flow-root bg-white dark:bg-gray-800 rounded-lg px-6 pb-8">
                                             <div className="-mt-6">
@@ -123,7 +116,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
                                     </div>
 
-                                    {/* Fitur 3 */}
                                     <div className="pt-6">
                                         <div className="flow-root bg-white dark:bg-gray-800 rounded-lg px-6 pb-8">
                                             <div className="-mt-6">
@@ -140,7 +132,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
                                     </div>
 
-                                    {/* Fitur 4 */}
                                     <div className="pt-6">
                                         <div className="flow-root bg-white dark:bg-gray-800 rounded-lg px-6 pb-8">
                                             <div className="-mt-6">
@@ -161,7 +152,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </section>
 
-                    {/* Preview Dashboard */}
                     <section className="bg-white dark:bg-gray-800">
                         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
                             <div className="bg-indigo-700 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
@@ -189,7 +179,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </section>
                 </main>
 
-                {/* Footer */}
                 <footer className="bg-white dark:bg-gray-800 mt-12">
                     <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
                         <p className="text-center text-base text-gray-500 dark:text-gray-400">

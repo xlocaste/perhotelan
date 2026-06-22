@@ -1,5 +1,6 @@
 import React from "react";
-import { useForm, Link } from "@inertiajs/react";
+import { useForm, Link, Head } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 const Update = ({ transaksi, reservasi = [] }) => {
     const { data, setData, put, processing, errors } = useForm({
@@ -18,8 +19,15 @@ const Update = ({ transaksi, reservasi = [] }) => {
     };
 
     return (
-        <div className="py-12">
-            <div className="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <AuthenticatedLayout
+            header={
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    Edit Transaksi
+                </h2>
+            }
+        >
+            <Head title="Edit Transaksi" />
+            <div className="max-w-3xl mx-auto">
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-gray-900">
                         Edit Transaksi
@@ -337,7 +345,7 @@ const Update = ({ transaksi, reservasi = [] }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </AuthenticatedLayout>
     );
 };
 
