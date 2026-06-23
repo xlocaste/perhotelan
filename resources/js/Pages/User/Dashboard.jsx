@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./_components/Navbar";
+import NavLink from "@/Components/NavLink";
 
 const formatRupiah = (angka) => {
     return new Intl.NumberFormat("id-ID", {
@@ -30,13 +31,27 @@ const Dashboard = ({ Kamar }) => {
             <Navbar />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-                <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-gray-900">
-                        Dashboard
-                    </h1>
-                    <p className="mt-1 text-sm text-gray-600">
-                        Selamat datang! Berikut adalah daftar kamar hotel Anda.
-                    </p>
+                <div className="flex justify-between">
+                    <div className="mb-8">
+                        <h1 className="text-2xl font-bold text-gray-900">
+                            Dashboard
+                        </h1>
+                        <p className="mt-1 text-sm text-gray-600">
+                            Selamat datang! Berikut adalah daftar kamar hotel Anda.
+                        </p>
+                    </div>
+
+                    <div>
+                        <NavLink
+                        href={route("kamar.create")}
+                        active={route().current("kamar.create")}
+                        className="flex gap-2 items-center"
+                        >
+                            <p>
+                                booking
+                            </p>
+                        </NavLink>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

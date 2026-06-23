@@ -103,4 +103,15 @@ Route::prefix('/user')->name('user.')->group(function() {
     Route::get('/', [TamuController::class, 'tamu'])->name('tamu');
 });
 
+Route::prefix('/user/kamar')->name('user.kamar.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [DashboardController::class, 'create'])->name('create');
+        Route::post('/', [DashboardController::class, 'store'])->name('store');
+        Route::put('/{user}', [DashboardController::class, 'update'])->name('update');
+        Route::delete('/{user}', [DashboardController::class, 'destroy'])->name('destroy');
+        Route::get('/{user}/edit', [DashboardController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [DashboardController::class, 'listKamar'])->name('list');
+});
+
 require __DIR__.'/auth.php';

@@ -93,8 +93,8 @@ const Navbar = ({ onMenuClick }) => {
                     Tamu
                 </NavLink>
                 <NavLink
-                    href={route("kamar.index")}
-                    active={route().current("kamar.index")}
+                    href={route("user.kamar.list")}
+                    active={route().current("user.kamar.list")}
                     className="flex gap-2 items-center"
                 >
                     <svg
