@@ -14,7 +14,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $daftarTransaksi = Transaksi::with('reservasi.kamar','reservasi.tamu')->get();
+        $daftarTransaksi = Transaksi::with('reservasi.kamar','reservasi.tamu.user')->get();
 
         return Inertia::render('Transaksi/List', [
             'Transaksi' => $daftarTransaksi
@@ -39,7 +39,7 @@ class TransaksiController extends Controller
     public function create()
     {
         return Inertia::render('Transaksi/Add', [
-            'reservasi' => Reservasi::with('tamu')->get(),
+            'reservasi' => Reservasi::with('tamu.user')->get(),
         ]);
     }
 
@@ -62,7 +62,7 @@ class TransaksiController extends Controller
     {
         return Inertia::render('Transaksi/Update', [
             'transaksi' => $transaksi,
-            'reservasi' => Reservasi::with('tamu')->get(),
+            'reservasi' => Reservasi::with('tamu.user')->get(),
         ]);
     }
 

@@ -94,7 +94,7 @@ const Update = ({ transaksi, reservasi = [] }) => {
                                                 key={item.id}
                                                 value={item.id}
                                             >
-                                                {item.kode} - {item.tamu?.nama}
+                                                {item.kode} - {item.tamu?.user?.name}
                                             </option>
                                         ))}
                                     </select>
