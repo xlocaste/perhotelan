@@ -16,7 +16,7 @@ class ReservasiController extends Controller
 {
     public function index()
     {
-        $daftarReservasi = Reservasi::with('tamu', 'kamar')->get();
+        $daftarReservasi = Reservasi::with('tamu.user', 'kamar')->get();
 
         return Inertia::render('Reservasi/List', [
             'Reservasi' => $daftarReservasi
@@ -40,8 +40,8 @@ class ReservasiController extends Controller
     public function create()
     {
         return Inertia::render('Reservasi/Add', [
-            'tamu' => Tamu::all(),
-            'kamar' => Kamar::where('status', 'tersedia')->get(),
+            'tamu' => Tamu::with('user')->get(),
+            'kamar' => Kamar::with('jenisKamar')->get(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class ReservasiController extends Controller
             Kamar::where('id', $reservasi->kamar_id)
                 ->update([
                     'status' => 'tersedia'
-                ]);
+            ]);
         }
 
         $reservasi->update([
@@ -84,7 +84,7 @@ class ReservasiController extends Controller
     {
         return Inertia::render('Reservasi/Update', [
             'reservasi' => $reservasi,
-            'tamu' => Tamu::all(),
+            'tamu' => Tamu::with('user')->get(),
             'kamar' => Kamar::where('status', 'tersedia')->get(),
         ]);
     }

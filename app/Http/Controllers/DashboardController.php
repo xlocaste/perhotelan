@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Kamar\StoreRequest;
+use App\Http\Requests\Kamar\UpdateRequest;
+use App\Models\JenisKamar;
 use App\Models\Kamar;
 use App\Models\Tamu;
 use Illuminate\Http\Request;
@@ -30,14 +32,22 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function kamarStore(StoreRequest $request)
+    public function update(UpdateRequest $request, Kamar $kamar)
     {
-        $kamar = Kamar::create([
+        $kamar->update([
             'nomor_kamar' => $request -> nomor_kamar,
             'jenis_kamar_id' => $request -> jenis_kamar_id,
             'status' => $request -> status,
         ]);
 
-        return redirect()->route('user.dashboard');
+        return redirect()->route('user.kamar.list');
+    }
+
+    public function edit(Kamar $kamar)
+    {
+        return Inertia::render('User/Kamar/Update', [
+            'kamar' => $kamar,
+            'jenisKamar' => JenisKamar::all(),
+        ]);
     }
 }

@@ -72,6 +72,7 @@ const Navbar = ({ onMenuClick }) => {
 
             {/* Center Navigation */}
             <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+                {user.roles?.includes('front office') && (
                 <NavLink
                     href={route("user.tamu")}
                     active={route().current("user.tamu")}
@@ -92,6 +93,7 @@ const Navbar = ({ onMenuClick }) => {
                     </svg>
                     Tamu
                 </NavLink>
+                )}
                 <NavLink
                     href={route("user.kamar.list")}
                     active={route().current("user.kamar.list")}

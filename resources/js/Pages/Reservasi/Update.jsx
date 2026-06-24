@@ -89,7 +89,7 @@ const Update = ({ reservasi, tamu = [], kamar = [] }) => {
                                                 key={item.id}
                                                 value={item.id}
                                             >
-                                                {item.nama}
+                                                {item.user.name}
                                             </option>
                                         ))}
                                     </select>

@@ -30,6 +30,8 @@ const List = ({ Reservasi = [] }) => {
         }
     };
 
+    console.log(Reservasi)
+
     return (
         <AuthenticatedLayout
             header={
@@ -112,7 +114,7 @@ const List = ({ Reservasi = [] }) => {
                                             {item.kode}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {item.tamu?.nama}
+                                            {item.tamu?.user?.name}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {item.kamar?.nomor_kamar}

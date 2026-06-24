@@ -107,9 +107,9 @@ Route::prefix('/user/kamar')->name('user.kamar.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [DashboardController::class, 'create'])->name('create');
         Route::post('/', [DashboardController::class, 'store'])->name('store');
-        Route::put('/{user}', [DashboardController::class, 'update'])->name('update');
-        Route::delete('/{user}', [DashboardController::class, 'destroy'])->name('destroy');
-        Route::get('/{user}/edit', [DashboardController::class, 'edit'])->name('edit');
+        Route::put('/{kamar}', [DashboardController::class, 'update'])->name('update');
+        Route::delete('/{kamar}', [DashboardController::class, 'destroy'])->name('destroy');
+        Route::get('/{kamar}/edit', [DashboardController::class, 'edit'])->name('edit');
     });
     Route::get('/', [DashboardController::class, 'listKamar'])->name('list');
 });
