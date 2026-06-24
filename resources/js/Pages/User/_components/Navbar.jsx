@@ -4,9 +4,10 @@ import NavLink from "@/Components/NavLink";
 
 const Navbar = ({ onMenuClick }) => {
     const { auth } = usePage().props;
-    const user = auth?.user;
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
+    const user = auth?.user;
+    const isFrontOffice = auth?.role?.includes('front office');
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -21,6 +22,8 @@ const Navbar = ({ onMenuClick }) => {
         return () =>
             document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    console.log(auth)
 
 
     return (
@@ -72,7 +75,7 @@ const Navbar = ({ onMenuClick }) => {
 
             {/* Center Navigation */}
             <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
-                {user.roles?.includes('front office') && (
+                {isFrontOffice && (
                 <NavLink
                     href={route("user.tamu")}
                     active={route().current("user.tamu")}

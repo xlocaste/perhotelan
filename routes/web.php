@@ -114,4 +114,11 @@ Route::prefix('/user/kamar')->name('user.kamar.')->group(function() {
     Route::get('/', [DashboardController::class, 'listKamar'])->name('list');
 });
 
+Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [DashboardController::class, 'create'])->name('create');
+        Route::post('/', [DashboardController::class, 'store'])->name('store');
+    });
+});
+
 require __DIR__.'/auth.php';

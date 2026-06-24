@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../_components/Navbar";
 import NavLink from "@/Components/NavLink";
+import { usePage } from "@inertiajs/react";
 
 const formatRupiah = (angka) => {
     return new Intl.NumberFormat("id-ID", {
@@ -24,6 +25,9 @@ const getStatusBadge = (status) => {
 };
 
 const List = ({ Kamar = [] }) => {
+    const { auth } = usePage().props;
+
+    const isFrontOffice = auth?.role?.includes("front office");
     return (
         <div className="min-h-screen bg-gray-50">
             <Navbar />
@@ -139,20 +143,22 @@ const List = ({ Kamar = [] }) => {
                                             )}
                                         </span>
                                     </div>
-                                    {kamar.status === "tersedia" ? (
-                                        <NavLink
-                                            href={route("user.kamar.edit", kamar.id)}
-                                            className="w-full flex justify-center items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition"
-                                        >
-                                            Pesan Sekarang
-                                        </NavLink>
-                                    ) : (
-                                        <button
-                                            disabled
-                                            className="w-full rounded-lg bg-gray-300 px-4 py-2 text-sm font-medium text-gray-500 cursor-not-allowed"
-                                        >
-                                            Tidak Tersedia
-                                        </button>
+                                    {isFrontOffice && (
+                                        kamar.status === "tersedia" ? (
+                                            <NavLink
+                                                href={route("user.reservasi.create", kamar.id)}
+                                                className="w-full flex justify-center items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition"
+                                            >
+                                                Pesan Sekarang
+                                            </NavLink>
+                                        ) : (
+                                            <button
+                                                disabled
+                                                className="w-full rounded-lg bg-gray-300 px-4 py-2 text-sm font-medium text-gray-500 cursor-not-allowed"
+                                            >
+                                                Tidak Tersedia
+                                            </button>
+                                        )
                                     )}
                                 </div>
                             </div>

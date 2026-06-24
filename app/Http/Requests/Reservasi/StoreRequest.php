@@ -21,12 +21,17 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'tamu_id' => 'required|exists:tamu,id',
+        $rules = [
             'kamar_id' => 'required|exists:kamar,id',
             'check_in' => 'required|date',
             'check_out' => 'required|date|after:check_in',
         ];
+
+        if (auth()->user()->hasRole('frontOffice')) {
+            $rules['tamu_id'] = 'nullable|exists:tamu,id';
+        }
+
+        return $rules;
     }
 
     public function messages(): array
