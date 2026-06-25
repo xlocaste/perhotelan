@@ -128,4 +128,16 @@ Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
     });
 });
 
+
+Route::prefix('/user/transaksi')->name('user.transaksi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [TransaksiController::class, 'createUser'])->name('createUser');
+        Route::post('/', [TransaksiController::class, 'storeUser'])->name('storeUser');
+        Route::put('/{transaksi}', [TransaksiController::class, 'update'])->name('update');
+        Route::delete('/{transaksi}', [TransaksiController::class, 'destroy'])->name('destroy');
+        Route::get('/{transaksi}/edit', [TransaksiController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [TransaksiController::class, 'indexUser'])->name('indexUser');
+});
+
 require __DIR__.'/auth.php';

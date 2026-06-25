@@ -72,4 +72,35 @@ class TransaksiController extends Controller
 
         return Redirect::route('transaksi.index')->with('message', 'Data berhasil dihapus');
     }
+
+    public function indexUser()
+    {
+        $daftarTransaksi = Transaksi::with('reservasi.kamar','reservasi.tamu.user')->get();
+
+        return Inertia::render('User/Transaksi/List', [
+            'Transaksi' => $daftarTransaksi
+        ]);
+    }
+
+    public function storeUser(StoreRequest $request)
+    {
+        Transaksi::create([
+            'reservasi_id' => $request -> reservasi_id,
+            'lama_menginap' => $request -> lama_menginap,
+            'harga_per_malam' => $request -> harga_per_malam,
+            'total_harga' => $request -> total_harga,
+            'metode_pembayaran' => $request -> metode_pembayaran,
+            'status_pembayaran' => $request -> status_pembayaran,
+            'tanggal_bayar' => $request -> tanggal_bayar,
+        ]);
+
+        return redirect()->route('user.transaksi.index');
+    }
+
+    public function createUser()
+    {
+        return Inertia::render('User/Transaksi/Add', [
+            'reservasi' => Reservasi::with('tamu.user')->get(),
+        ]);
+    }
 }
