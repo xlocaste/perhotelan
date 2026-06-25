@@ -11,6 +11,8 @@ use App\Models\Tamu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -77,5 +79,33 @@ class DashboardController extends Controller
             'tamu' => Tamu::with('user')->get(),
             'kamar' => Kamar::with('jenisKamar')->get(),
         ]);
+    }
+
+    public function storeTamu(\App\Http\Requests\Tamu\StoreRequest $request)
+    {
+        DB::transaction(function () use ($request) {
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $user->assignRole('pengunjung');
+
+            Tamu::create([
+                'user_id' => $user->id,
+                'no_ktp' => $request->no_ktp,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+            ]);
+        });
+
+        return redirect()->route('user.tamu');
+    }
+
+    public function createTamu()
+    {
+        return Inertia::render('User/Tamu/Add');
     }
 }

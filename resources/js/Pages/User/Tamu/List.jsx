@@ -12,7 +12,7 @@ const List = ({ Tamu = [] }) => {
     return (
         <div className="min-h-screen">
             <Head title="Daftar Tamu" />
-            
+
             <Navbar />
 
             <div className="p-4">
@@ -27,7 +27,7 @@ const List = ({ Tamu = [] }) => {
                             </p>
                         </div>
                         <div className="mt-4 flex sm:ml-4 sm:mt-0">
-                            <Link href={route("tamu.create")}>
+                            <Link href={route("user.create")}>
                                 <button className="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200">
                                     <svg
                                         className="-ml-0.5 mr-1.5 h-5 w-5"
@@ -107,15 +107,6 @@ const List = ({ Tamu = [] }) => {
                                                 </p>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <Link
-                                                    href={route("tamu.edit", item.id)}
-                                                    className="text-indigo-600 hover:text-indigo-900 inline-flex items-center mr-4"
-                                                >
-                                                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                                    </svg>
-                                                    Ubah
-                                                </Link>
                                                 <button
                                                     onClick={() => handleDelete(item.id)}
                                                     className="text-red-600 hover:text-red-900 inline-flex items-center"

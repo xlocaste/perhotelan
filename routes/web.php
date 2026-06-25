@@ -94,8 +94,8 @@ Route::prefix('/transaksi')->name('transaksi.')->group(function() {
 
 Route::prefix('/user')->name('user.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
-        Route::get('/create', [TamuController::class, 'create'])->name('create');
-        Route::post('/', [TamuController::class, 'store'])->name('store');
+        Route::get('/create', [DashboardController::class, 'createTamu'])->name('create');
+        Route::post('/', [DashboardController::class, 'storeTamu'])->name('store');
         Route::put('/{user}', [TamuController::class, 'update'])->name('update');
         Route::delete('/{user}', [TamuController::class, 'destroy'])->name('destroy');
         Route::get('/{user}/edit', [TamuController::class, 'edit'])->name('edit');
