@@ -95,4 +95,35 @@ class ReservasiController extends Controller
 
         return Redirect::route('reservasi.index')->with('message', 'Data berhasil dihapus');
     }
+
+    public function indexUser()
+    {
+        $daftarReservasi = Reservasi::with('tamu.user', 'kamar')->get();
+
+        return Inertia::render('User/Reservasi/List', [
+            'Reservasi' => $daftarReservasi
+        ]);
+    }
+
+    public function storeUser(StoreRequest $request)
+    {
+        Reservasi::create([
+            'kode' => 'RSV-' . strtoupper(Str::random(6)),
+            'tamu_id' => $request -> tamu_id,
+            'kamar_id' => $request -> kamar_id,
+            'check_in' => $request -> check_in,
+            'check_out' => $request -> check_out,
+            'status' => 'pending',
+        ]);
+
+        return redirect()->route('user.reservasi.indexUser');
+    }
+
+    public function createUser()
+    {
+        return Inertia::render('User/Reservasi/Add', [
+            'tamu' => Tamu::with('user')->get(),
+            'kamar' => Kamar::with('jenisKamar')->get(),
+        ]);
+    }
 }

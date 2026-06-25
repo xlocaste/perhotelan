@@ -121,4 +121,11 @@ Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
     });
 });
 
+
+Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/', [ReservasiController::class, 'indexUser'])->name('indexUser');
+    });
+});
+
 require __DIR__.'/auth.php';
