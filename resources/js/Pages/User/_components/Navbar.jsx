@@ -7,7 +7,7 @@ const Navbar = ({ onMenuClick }) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
     const user = auth?.user;
-    const isFrontOffice = auth?.role?.includes('front office');
+    const isFrontOffice = auth?.role?.includes("front office");
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -23,8 +23,7 @@ const Navbar = ({ onMenuClick }) => {
             document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    console.log(auth)
-
+    console.log(auth);
 
     return (
         <div className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm sm:px-6 lg:px-8">
@@ -76,26 +75,26 @@ const Navbar = ({ onMenuClick }) => {
             {/* Center Navigation */}
             <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
                 {isFrontOffice && (
-                <NavLink
-                    href={route("user.tamu")}
-                    active={route().current("user.tamu")}
-                    className="flex gap-2 items-center"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <NavLink
+                        href={route("user.tamu")}
+                        active={route().current("user.tamu")}
+                        className="flex gap-2 items-center"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                        />
-                    </svg>
-                    Tamu
-                </NavLink>
+                        <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                            />
+                        </svg>
+                        Tamu
+                    </NavLink>
                 )}
                 <NavLink
                     href={route("user.kamar.list")}
@@ -132,7 +131,7 @@ const Navbar = ({ onMenuClick }) => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                         />
                     </svg>
                     Reservasi
@@ -152,7 +151,7 @@ const Navbar = ({ onMenuClick }) => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                     </svg>
                     Transaksi
@@ -194,7 +193,7 @@ const Navbar = ({ onMenuClick }) => {
                                 ? "opacity-100 translate-y-0 visible"
                                 : "opacity-0 -translate-y-2 invisible"
                         }`}
-                        style={{ top: '100%' }}
+                        style={{ top: "100%" }}
                     >
                         <div className="py-1">
                             <Link

@@ -46,10 +46,7 @@ const Update = ({ kamar, jenisKamar = [] }) => {
                         </h2>
                     </div>
 
-                    <form
-                        onSubmit={handleSubmit}
-                        className="p-6 space-y-6"
-                    >
+                    <form onSubmit={handleSubmit} className="p-6 space-y-6">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                 Nomor Kamar
@@ -59,10 +56,7 @@ const Update = ({ kamar, jenisKamar = [] }) => {
                                 type="text"
                                 value={data.nomor_kamar}
                                 onChange={(e) =>
-                                    setData(
-                                        "nomor_kamar",
-                                        e.target.value
-                                    )
+                                    setData("nomor_kamar", e.target.value)
                                 }
                                 className="w-full rounded-lg border-gray-300"
                             />
@@ -82,22 +76,14 @@ const Update = ({ kamar, jenisKamar = [] }) => {
                             <select
                                 value={data.jenis_kamar_id}
                                 onChange={(e) =>
-                                    setData(
-                                        "jenis_kamar_id",
-                                        e.target.value
-                                    )
+                                    setData("jenis_kamar_id", e.target.value)
                                 }
                                 className="w-full rounded-lg border-gray-300"
                             >
-                                <option value="">
-                                    Pilih Jenis Kamar
-                                </option>
+                                <option value="">Pilih Jenis Kamar</option>
 
                                 {jenisKamar.map((item) => (
-                                    <option
-                                        key={item.id}
-                                        value={item.id}
-                                    >
+                                    <option key={item.id} value={item.id}>
                                         {item.kode} - {item.nama}
                                     </option>
                                 ))}
@@ -122,15 +108,9 @@ const Update = ({ kamar, jenisKamar = [] }) => {
                                 }
                                 className="w-full rounded-lg border-gray-300"
                             >
-                                <option value="tersedia">
-                                    Tersedia
-                                </option>
-                                <option value="terisi">
-                                    Terisi
-                                </option>
-                                <option value="maintenance">
-                                    Maintenance
-                                </option>
+                                <option value="tersedia">Tersedia</option>
+                                <option value="terisi">Terisi</option>
+                                <option value="maintenance">Maintenance</option>
                             </select>
 
                             {errors.status && (
@@ -153,9 +133,7 @@ const Update = ({ kamar, jenisKamar = [] }) => {
                                 disabled={processing}
                                 className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg disabled:opacity-50"
                             >
-                                {processing
-                                    ? "Menyimpan..."
-                                    : "Update Kamar"}
+                                {processing ? "Menyimpan..." : "Update Kamar"}
                             </button>
                         </div>
                     </form>
