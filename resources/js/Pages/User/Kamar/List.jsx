@@ -41,12 +41,14 @@ const List = ({ Kamar = [] }) => {
                             Informasi seluruh kamar yang tersedia di hotel.
                         </p>
                     </div>
+                    {isFrontOffice && (
                     <Link
                         href={route("user.kamar.create")}
                         className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150 shadow-sm"
                     >
                         Booking Kamar
                     </Link>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

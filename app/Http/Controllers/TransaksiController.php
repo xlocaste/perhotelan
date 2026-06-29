@@ -94,13 +94,16 @@ class TransaksiController extends Controller
             'tanggal_bayar' => $request -> tanggal_bayar,
         ]);
 
-        return redirect()->route('user.transaksi.index');
+        return redirect()->route('user.transaksi.indexUser');
     }
 
     public function createUser()
     {
         return Inertia::render('User/Transaksi/Add', [
-            'reservasi' => Reservasi::with('tamu.user')->get(),
+            'reservasi' => Reservasi::with([
+                'tamu.user',
+                'kamar.jenisKamar'
+            ])->get(),
         ]);
     }
 }

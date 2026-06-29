@@ -116,6 +116,8 @@ Route::prefix('/user/kamar')->name('user.kamar.')->group(function() {
 
 Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [DashboardController::class, 'create'])->name('create');
+        Route::post('/', [DashboardController::class, 'store'])->name('store');
         Route::put('/{reservasi}', [ReservasiController::class, 'updateUser'])->name('updateUser');
         Route::get('/{reservasi}/edit', [ReservasiController::class, 'editUser'])->name('editUser');
     });

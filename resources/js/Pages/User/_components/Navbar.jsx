@@ -116,6 +116,7 @@ const Navbar = ({ onMenuClick }) => {
                     </svg>
                     Kamar
                 </NavLink>
+                {isFrontOffice && (
                 <NavLink
                     href={route("user.reservasi.indexUser")}
                     active={route().current("user.reservasi.indexUser")}
@@ -136,10 +137,12 @@ const Navbar = ({ onMenuClick }) => {
                     </svg>
                     Reservasi
                 </NavLink>
+                )}
+                {isFrontOffice && (
                 <NavLink
-                    href={route("user.transaksi.indexUser")}
-                    active={route().current("user.transaksi.indexUser")}
-                    className="flex gap-2 items-center"
+                href={route("user.transaksi.indexUser")}
+                active={route().current("user.transaksi.indexUser")}
+                className="flex gap-2 items-center"
                 >
                     <svg
                         className="w-5 h-5"
@@ -156,6 +159,7 @@ const Navbar = ({ onMenuClick }) => {
                     </svg>
                     Transaksi
                 </NavLink>
+                )}
             </div>
 
             {user && (
