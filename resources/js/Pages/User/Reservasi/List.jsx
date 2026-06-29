@@ -109,6 +109,12 @@ const List = ({ Reservasi = [] }) => {
                                     >
                                         Status
                                     </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+                                    >
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200 whitespace-nowrap">
@@ -151,6 +157,14 @@ const List = ({ Reservasi = [] }) => {
                                                 >
                                                     {item.status || "Pending"}
                                                 </span>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <Link
+                                                    href={route("user.reservasi.editUser", item.id)}
+                                                    className="inline-flex items-center px-3 py-1.5 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700"
+                                                >
+                                                    Edit
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))

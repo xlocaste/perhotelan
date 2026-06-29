@@ -126,4 +126,51 @@ class ReservasiController extends Controller
             'kamar' => Kamar::with('jenisKamar')->get(),
         ]);
     }
+
+    public function updateUser(UpdateRequest $request, Reservasi $reservasi)
+    {
+        if ($request->kamar_id != $reservasi->kamar_id) {
+
+            Kamar::where('id', $reservasi->kamar_id)
+                ->update([
+                    'status' => 'tersedia'
+            ]);
+        }
+
+        $reservasi->update([
+            'tamu_id' => $request->tamu_id,
+            'kamar_id' => $request->kamar_id,
+            'check_in' => $request->check_in,
+            'check_out' => $request->check_out,
+            'status' => $request->status,
+        ]);
+
+        if ($request->status == 'checkin') {
+            Kamar::where('id', $request->kamar_id)
+                ->update([
+                    'status' => 'terisi'
+                ]);
+        }
+
+        if (in_array($request->status, ['checkout', 'batal'])) {
+            Kamar::where('id', $request->kamar_id)
+                ->update([
+                    'status' => 'tersedia'
+                ]);
+        }
+
+        return redirect()->route('user.reservasi.indexUser');
+    }
+
+    public function editUser(Reservasi $reservasi)
+    {
+        $reservasi->load([
+            'tamu.user',
+            'kamar.jenisKamar'
+        ]);
+
+        return Inertia::render('User/Reservasi/Update', [
+            'reservasi' => $reservasi,
+        ]);
+    }
 }
