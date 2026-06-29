@@ -130,7 +130,6 @@ Route::prefix('/user/reservasi')->name('user.reservasi.')->group(function() {
     });
 });
 
-
 Route::prefix('/user/transaksi')->name('user.transaksi.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [TransaksiController::class, 'createUser'])->name('createUser');
@@ -140,6 +139,13 @@ Route::prefix('/user/transaksi')->name('user.transaksi.')->group(function() {
         Route::get('/{transaksi}/edit', [TransaksiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [TransaksiController::class, 'indexUser'])->name('indexUser');
+});
+
+Route::prefix('/user/laporan')->name('user.laporan.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/', [TransaksiController::class, 'laporan'])->name('index');
+        Route::get('/cetak', [TransaksiController::class, 'cetak'])->name('cetak');
+    });
 });
 
 require __DIR__.'/auth.php';
