@@ -10,109 +10,150 @@ const List = ({ Tamu = [] }) => {
     };
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-slate-50">
             <Head title="Daftar Tamu" />
 
             <Navbar />
 
-            <div className="p-4">
-                <div className="bg-white shadow-sm rounded-lg overflow-hidden">
-                    <div className="px-6 py-5 border-b border-gray-200 sm:flex sm:items-center sm:justify-between bg-white">
-                        <div className="flex-1 min-w-0">
-                            <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                                Daftar Tamu
-                            </h1>
-                            <p className="mt-2 text-sm text-gray-500">
-                                Kelola database tamu hotel dan informasi kontak mereka.
-                            </p>
-                        </div>
-                        <div className="mt-4 flex sm:ml-4 sm:mt-0">
-                            <Link href={route("user.create")}>
-                                <button className="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200">
-                                    <svg
-                                        className="-ml-0.5 mr-1.5 h-5 w-5"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                    </svg>
-                                    Tambah Tamu
-                                </button>
-                            </Link>
-                        </div>
+            <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
+                {/* Page Header */}
+                <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
+                            Daftar Tamu
+                        </h1>
+                        <p className="mt-1 text-sm text-slate-500">
+                            Kelola database tamu hotel dan informasi kontak
+                            mereka.
+                        </p>
                     </div>
+                    <div className="flex justify-end">
+                        <Link
+                            href={route("user.create")}
+                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700 hover:shadow-md transition-all ring-1 ring-indigo-700/50"
+                        >
+                            <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 4v16m8-8H4"
+                                />
+                            </svg>
+                            Tambah Tamu
+                        </Link>
+                    </div>
+                </div>
 
+                {/* Table Section */}
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">
                     <div className="overflow-x-auto">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
+                        <table className="min-w-full divide-y divide-slate-200">
+                            <thead className="bg-slate-50/80">
                                 <tr>
-                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider w-16"
+                                    >
                                         No
                                     </th>
-                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                                    >
                                         Identitas Tamu
                                     </th>
-                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                                    >
                                         Kontak
                                     </th>
-                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                                    >
                                         Alamat
                                     </th>
-                                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                        Operasi
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-4 text-right text-xs font-bold text-slate-500 uppercase tracking-wider"
+                                    >
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-200 bg-white">
+                            <tbody className="bg-white divide-y divide-slate-100 whitespace-nowrap">
                                 {Tamu.length > 0 ? (
                                     Tamu.map((item, index) => (
                                         <tr
                                             key={item.id}
-                                            className="hover:bg-gray-50 transition-colors"
+                                            className="hover:bg-slate-50/80 transition-colors"
                                         >
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-500">
                                                 {index + 1}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="h-10 w-10 flex-shrink-0">
-                                                        <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                                                            <span className="text-indigo-700 font-bold">
-                                                                {item.user?.name?.charAt(0).toUpperCase()}
+                                                        <div className="h-10 w-10 rounded-full bg-indigo-50 flex items-center justify-center ring-1 ring-inset ring-indigo-100 shadow-sm">
+                                                            <span className="text-indigo-700 font-bold text-lg">
+                                                                {item.user?.name
+                                                                    ?.charAt(0)
+                                                                    .toUpperCase()}
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <div className="ml-4">
-                                                        <div className="text-sm font-medium text-gray-900">
+                                                        <div className="text-sm font-bold text-slate-900">
                                                             {item.user?.name}
                                                         </div>
-                                                        <div className="text-sm text-gray-500">
+                                                        <div className="text-xs font-medium text-slate-500 mt-0.5">
                                                             KTP: {item.no_ktp}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-sm text-gray-900">
+                                                <div className="text-sm font-semibold text-slate-700">
                                                     {item.no_hp}
                                                 </div>
-                                                <div className="text-sm text-gray-500">
+                                                <div className="text-sm text-slate-500">
                                                     {item.user?.email}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-4 text-sm text-gray-500 max-w-xs">
-                                                <p className="truncate" title={item.alamat}>
+                                            <td className="px-6 py-4 text-sm text-slate-600 max-w-xs">
+                                                <p
+                                                    className="truncate"
+                                                    title={item.alamat}
+                                                >
                                                     {item.alamat}
                                                 </p>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <button
-                                                    onClick={() => handleDelete(item.id)}
-                                                    className="text-red-600 hover:text-red-900 inline-flex items-center"
+                                                    onClick={() =>
+                                                        handleDelete(item.id)
+                                                    }
+                                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 hover:text-red-700 ring-1 ring-inset ring-red-200 shadow-sm transition-all"
                                                 >
-                                                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                    <svg
+                                                        className="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                        />
                                                     </svg>
                                                     Hapus
                                                 </button>
@@ -121,15 +162,31 @@ const List = ({ Tamu = [] }) => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="5" className="px-6 py-12 text-center">
-                                            <div className="flex flex-col items-center">
-                                                <div className="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-400">
-                                                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                                    </svg>
-                                                </div>
-                                                <p className="text-gray-500 font-medium">Belum ada data tamu</p>
-                                                <p className="text-gray-400 text-sm mt-1">Silakan klik "Tambah Tamu" untuk memasukkan data baru.</p>
+                                        <td
+                                            colSpan="5"
+                                            className="px-6 py-16 text-center"
+                                        >
+                                            <div className="flex flex-col items-center justify-center text-slate-400">
+                                                <svg
+                                                    className="w-16 h-16 mb-4 text-slate-300"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="1"
+                                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                                    />
+                                                </svg>
+                                                <h3 className="text-lg font-medium text-slate-900">
+                                                    Belum ada data tamu
+                                                </h3>
+                                                <p className="mt-1 text-sm text-slate-500">
+                                                    Silakan klik "Tambah Tamu"
+                                                    untuk memasukkan data baru.
+                                                </p>
                                             </div>
                                         </td>
                                     </tr>
