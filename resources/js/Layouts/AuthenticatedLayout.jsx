@@ -6,6 +6,7 @@ export default function AuthenticatedLayout({ header, children }) {
     const user = auth.user;
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+    const isAdmin = auth?.role?.includes("admin");
 
     useEffect(() => {
         const handleEscape = (e) => {
@@ -133,6 +134,26 @@ export default function AuthenticatedLayout({ header, children }) {
             name: "Transaksi",
             href: route("transaksi.index"),
             active: route().current("transaksi.index"),
+            icon: (
+                <svg
+                    className="w-5 h-5 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 9V7a5 5 0 00-10 0v2M5 9h14l-1 10H6L5 9z"
+                    />
+                </svg>
+            ),
+        },
+        {
+            name: "Laporan",
+            href: route("laporan.index"),
+            active: route().current("laporan.index"),
             icon: (
                 <svg
                     className="w-5 h-5 flex-shrink-0"

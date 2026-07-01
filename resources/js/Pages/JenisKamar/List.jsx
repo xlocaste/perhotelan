@@ -10,7 +10,8 @@ const formatRupiah = (amount) => {
     }).format(amount);
 };
 
-const List = ({ JenisKamar }) => {
+const List = ({ auth, JenisKamar }) => {
+    const isAdmin = auth?.role?.includes("admin");
     const handleDelete = (id) => {
         if (confirm("Yakin ingin menghapus data jenis kamar ini?")) {
             router.delete(route("jenis-kamar.destroy", id));
@@ -33,6 +34,7 @@ const List = ({ JenisKamar }) => {
                         </h3>
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-4">
+                        {isAdmin && (
                         <Link href={route("jenis-kamar.create")}>
                             <button className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
                                 <svg
@@ -52,6 +54,7 @@ const List = ({ JenisKamar }) => {
                                 Tambah Jenis Kamar
                             </button>
                         </Link>
+                        )}
                     </div>
                 </div>
 
@@ -77,9 +80,11 @@ const List = ({ JenisKamar }) => {
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Fasilitas
                                 </th>
+                                {isAdmin && (
                                 <th className="relative px-6 py-3">
                                     <span className="sr-only">Aksi</span>
                                 </th>
+                                )}
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -112,6 +117,7 @@ const List = ({ JenisKamar }) => {
                                                 {item.fasilitas}
                                             </div>
                                         </td>
+                                        {isAdmin && (
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <Link
                                                 href={route(
@@ -131,6 +137,7 @@ const List = ({ JenisKamar }) => {
                                                 Hapus
                                             </button>
                                         </td>
+                                        )}
                                     </tr>
                                 ))
                             ) : (

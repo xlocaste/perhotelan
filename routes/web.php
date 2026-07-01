@@ -141,6 +141,13 @@ Route::prefix('/user/transaksi')->name('user.transaksi.')->group(function() {
     Route::get('/', [TransaksiController::class, 'indexUser'])->name('indexUser');
 });
 
+Route::prefix('/laporan')->name('laporan.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/', [TransaksiController::class, 'laporantransaksi'])->name('index');
+        Route::get('/cetak', [TransaksiController::class, 'cetak'])->name('cetak');
+    });
+});
+
 Route::prefix('/user/laporan')->name('user.laporan.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [TransaksiController::class, 'laporan'])->name('index');

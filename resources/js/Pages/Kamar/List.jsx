@@ -11,16 +11,17 @@ const StatusBadge = ({ status }) => {
     const style =
         statusStyles[status.toLowerCase()] || "bg-gray-100 text-gray-800";
 
-    return (
+        return (
         <span
-            className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${style}`}
+        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${style}`}
         >
             {status}
         </span>
     );
 };
 
-const List = ({ Kamar = [] }) => {
+const List = ({ auth, Kamar = [] }) => {
+    const isAdmin = auth?.role?.includes("admin");
     const handleDelete = (id) => {
         if (confirm("Yakin ingin menghapus data kamar ini?")) {
             router.delete(route("kamar.destroy", id));
@@ -45,25 +46,27 @@ const List = ({ Kamar = [] }) => {
                         </h3>
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-4">
-                        <Link href={route("kamar.create")}>
-                            <button className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
-                                <svg
-                                    className="w-5 h-5 mr-2 -ml-1"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M12 4v16m8-8H4"
-                                    ></path>
-                                </svg>
-                                Tambah Kamar
-                            </button>
-                        </Link>
+                        {isAdmin && (
+                            <Link href={route("kamar.create")}>
+                                <button className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
+                                    <svg
+                                        className="w-5 h-5 mr-2 -ml-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M12 4v16m8-8H4"
+                                            ></path>
+                                    </svg>
+                                    Tambah Kamar
+                                </button>
+                            </Link>
+                        )}
                     </div>
                 </div>
 
@@ -86,9 +89,11 @@ const List = ({ Kamar = [] }) => {
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Status
                                 </th>
+                                {isAdmin && (
                                 <th className="relative px-6 py-3">
                                     <span className="sr-only">Aksi</span>
                                 </th>
+                                )}
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -113,6 +118,7 @@ const List = ({ Kamar = [] }) => {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             <StatusBadge status={item.status} />
                                         </td>
+                                        {isAdmin && (
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <Link
                                                 href={route(
@@ -132,6 +138,7 @@ const List = ({ Kamar = [] }) => {
                                                 Hapus
                                             </button>
                                         </td>
+                                        )}
                                     </tr>
                                 ))
                             ) : (

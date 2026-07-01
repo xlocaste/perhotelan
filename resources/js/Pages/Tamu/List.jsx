@@ -3,13 +3,12 @@ import { Link, router, usePage } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 const List = ({ auth, Tamu }) => {
+    const isAdmin = auth?.role?.includes("admin");
     const handleDelete = (id) => {
         if (confirm("Yakin ingin menghapus data tamu ini?")) {
             router.delete(route("tamu.destroy", id));
         }
     };
-
-    console.log(auth.user)
 
     return (
         <AuthenticatedLayout  user={auth.user}
@@ -27,6 +26,7 @@ const List = ({ auth, Tamu }) => {
                         </h3>
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-4">
+                        {isAdmin && (
                         <Link href={route("tamu.create")}>
                             <button className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
                                 <svg
@@ -46,6 +46,7 @@ const List = ({ auth, Tamu }) => {
                                 Tambah Tamu
                             </button>
                         </Link>
+                        )}
                     </div>
                 </div>
 
@@ -68,9 +69,11 @@ const List = ({ auth, Tamu }) => {
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     No. HP
                                 </th>
-                                <th className="relative px-6 py-3">
-                                    <span className="sr-only">Aksi</span>
-                                </th>
+                                {isAdmin && (
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <span className="">Aksi</span>
+                                    </th>
+                                )}
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -98,6 +101,7 @@ const List = ({ auth, Tamu }) => {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {item.no_hp}
                                         </td>
+                                        {isAdmin && (
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <Link
                                                 href={route(
@@ -117,6 +121,7 @@ const List = ({ auth, Tamu }) => {
                                                 Hapus
                                             </button>
                                         </td>
+                                        )}
                                     </tr>
                                 ))
                             ) : (

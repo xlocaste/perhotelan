@@ -109,6 +109,34 @@ class TransaksiController extends Controller
         ]);
     }
 
+    public function laporanTransaksi(Request $request)
+    {
+        $query = Transaksi::with([
+            'reservasi.tamu.user',
+            'reservasi.kamar.jenisKamar'
+        ]);
+
+        if ($request->tanggal_awal && $request->tanggal_akhir) {
+            $query->whereBetween('tanggal_bayar', [
+                $request->tanggal_awal,
+                $request->tanggal_akhir
+            ]);
+        }
+
+        $transaksi = $query->get();
+
+        $totalPendapatan = $transaksi->sum('total_harga');
+
+        return Inertia::render('Laporan/List', [
+            'transaksi' => $transaksi,
+            'totalPendapatan' => $totalPendapatan,
+            'filter' => [
+                'tanggal_awal' => $request->tanggal_awal,
+                'tanggal_akhir' => $request->tanggal_akhir,
+            ]
+        ]);
+    }
+
     public function laporan(Request $request)
     {
         $query = Transaksi::with([

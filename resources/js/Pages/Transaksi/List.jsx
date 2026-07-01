@@ -30,7 +30,7 @@ const StatusBadge = ({ status }) => {
 };
 
 const List = ({ auth, Transaksi = [] }) => {
-    // Fungsi ini TIDAK DIUBAH, sesuai permintaan
+    const isAdmin = auth?.role?.includes("admin");
     const handleDelete = (id) => {
         if (confirm("Yakin hapus data?")) {
             router.delete(route("transaksi.destroy", id));
@@ -148,6 +148,7 @@ const List = ({ auth, Transaksi = [] }) => {
                                         >
                                             Tanggal Bayar
                                         </th>
+                                        {isAdmin && (
                                         <th
                                             scope="col"
                                             className="relative px-6 py-3"
@@ -156,6 +157,7 @@ const List = ({ auth, Transaksi = [] }) => {
                                                 Aksi
                                             </span>
                                         </th>
+                                        )}
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
@@ -207,6 +209,7 @@ const List = ({ auth, Transaksi = [] }) => {
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                     {item.tanggal_bayar || "-"}
                                                 </td>
+                                                {isAdmin && (
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <Link
                                                         href={route(
@@ -228,6 +231,7 @@ const List = ({ auth, Transaksi = [] }) => {
                                                         Hapus
                                                     </button>
                                                 </td>
+                                                )}
                                             </tr>
                                         ))
                                     ) : (
