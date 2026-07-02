@@ -44,11 +44,11 @@ class AuthenticatedSessionController extends Controller
         }
 
         if ($user->hasRole('front office')) {
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.kamar.list');
         }
 
         if ($user->hasRole('pengunjung')) {
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.kamar.list');
         }
 
         return redirect('/');
