@@ -23,8 +23,6 @@ const Navbar = ({ onMenuClick }) => {
             document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    console.log(auth);
-
     return (
         <div className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm sm:px-6 lg:px-8">
             <div className="flex items-center">
@@ -102,7 +100,7 @@ const Navbar = ({ onMenuClick }) => {
                     className="flex gap-2 items-center"
                 >
                     <svg
-                        className="w-5 h-5"
+                        className="w-5 h-5 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -111,76 +109,76 @@ const Navbar = ({ onMenuClick }) => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                            d="M3 10h18v8a1 1 0 01-1 1h-1v-3H5v3H4a1 1 0 01-1-1v-8zm2 0V7a2 2 0 012-2h3a2 2 0 012 2v3"
                         />
                     </svg>
                     Kamar
                 </NavLink>
                 {isFrontOffice && (
-                <NavLink
-                    href={route("user.reservasi.indexUser")}
-                    active={route().current("user.reservasi.indexUser")}
-                    className="flex gap-2 items-center"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <NavLink
+                        href={route("user.reservasi.indexUser")}
+                        active={route().current("user.reservasi.indexUser")}
+                        className="flex gap-2 items-center"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                        />
-                    </svg>
-                    Reservasi
-                </NavLink>
+                        <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                        </svg>
+                        Reservasi
+                    </NavLink>
                 )}
                 {isFrontOffice && (
-                <NavLink
-                href={route("user.transaksi.indexUser")}
-                active={route().current("user.transaksi.indexUser")}
-                className="flex gap-2 items-center"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <NavLink
+                        href={route("user.transaksi.indexUser")}
+                        active={route().current("user.transaksi.indexUser")}
+                        className="flex gap-2 items-center"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>
-                    Transaksi
-                </NavLink>
+                        <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        Transaksi
+                    </NavLink>
                 )}
                 {isFrontOffice && (
-                <NavLink
-                href={route("user.laporan.index")}
-                active={route().current("user.laporan.index")}
-                className="flex gap-2 items-center"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <NavLink
+                        href={route("user.laporan.index")}
+                        active={route().current("user.laporan.index")}
+                        className="flex gap-2 items-center"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>
-                    Laporan
-                </NavLink>
+                        <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 17v-6m4 6V7m4 10v-3M5 21h14"
+                            />
+                        </svg>
+                        Laporan
+                    </NavLink>
                 )}
             </div>
 
